@@ -9,7 +9,7 @@ import {
   Stack,
 } from "@mui/material";
 import request from "axios";
-import { Network, ApolloNode } from "modules/common/config/networks";
+import { Network } from "modules/common/config/networks";
 import { InfoItem } from "./";
 
 export const NetworkCard = ({ network }: { network: Network }) => {
@@ -60,14 +60,6 @@ export const NetworkCard = ({ network }: { network: Network }) => {
     fetchNetworks();
   });
 
-  const getApolloEndpoint = (
-    type: "rpc" | "rest",
-    node: ApolloNode | undefined
-  ): string => {
-    if (!node) return "";
-    return node.services.find((s) => s.type === type)?.url || "";
-  };
-
   const RemoteInfo = () => {
     return (
       <Box>
@@ -92,20 +84,20 @@ export const NetworkCard = ({ network }: { network: Network }) => {
         <InfoItem label={"Block Height"} content={String(apolloBlock)} />
         <InfoItem
           label={"Apollo RPC"}
-          content={getApolloEndpoint(
-            "rpc",
-            network.nodes?.find((n) => n.services.find((s) => s.type === "rpc"))
-          )}
+          content={
+            network.nodes?.map((n) =>
+              n.services.find((s) => s.type === "rpc")
+            )[0]?.url
+          }
           link
         />
         <InfoItem
           label={"Apollo LCD"}
-          content={getApolloEndpoint(
-            "rest",
-            network.nodes?.find((n) =>
+          content={
+            network.nodes?.map((n) =>
               n.services.find((s) => s.type === "rest")
-            )
-          )}
+            )[0]?.url
+          }
           link
         />
       </Box>
