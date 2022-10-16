@@ -35,7 +35,7 @@
         "name": "keplr",
         "config": {
           "rpc": "https://osmo-test-rpc.apollo.farm",
-          "rest": "https://osmo-test-rest.apollo.farm",
+          "rest": "https://osmo-test-lcd.apollo.farm",
           "chainId": "osmo-test-4",
           "chainName": "osmosistestnet",
           "stakeCurrency": {
@@ -141,7 +141,7 @@
         "name": "keplr",
         "config": {
           "rpc": "https://osmo-mainnet-rpc.apollo.farm",
-          "rest": "https://osmo-mainnet-rest.apollo.farm",
+          "rest": "https://osmo-mainnet-lcd.apollo.farm",
           "chainId": "osmosis-1",
           "chainName": "osmosis",
           "stakeCurrency": {
@@ -247,7 +247,7 @@
         "name": "keplr",
         "config": {
           "rpc": "https://secret-testnet-rpc.apollo.farm",
-          "rest": "https://secret-testnet-rest.apollo.farm",
+          "rest": "https://secret-testnet-lcd.apollo.farm",
           "chainId": "pulsar-2",
           "chainName": "secrettestnet",
           "stakeCurrency": {
