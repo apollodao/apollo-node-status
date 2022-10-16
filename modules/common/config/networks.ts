@@ -1,3 +1,5 @@
+import { ChainInfo } from "@keplr-wallet/types";
+
 export const supported_networks = [
   "osmo-test-4",
   "osmosis-1",
@@ -42,7 +44,7 @@ export type ApolloNode = {
 
 type Wallet = {
   name: string;
-  config?: any;
+  config?: ChainInfo | undefined;
 };
 
 type App = {

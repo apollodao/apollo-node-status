@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import request from "axios";
 import { Network } from "modules/common/config/networks";
+
 import { InfoItem } from "./";
 
 export const NetworkCard = ({ network }: { network: Network }) => {

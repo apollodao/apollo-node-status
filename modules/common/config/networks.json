@@ -33,7 +33,50 @@
     "supported_wallets": [
       {
         "name": "keplr",
-        "config": {}
+        "config": {
+          "rpc": "https://osmo-test-rpc.apollo.farm",
+          "rest": "https://osmo-test-rest.apollo.farm",
+          "chainId": "osmo-test-4",
+          "chainName": "osmosistestnet",
+          "stakeCurrency": {
+            "coinDenom": "OSMO",
+            "coinMinimalDenom": "uosmo",
+            "coinDecimals": 6,
+            "coinGeckoId": "osmosis"
+          },
+          "bip44": {
+            "coinType": 118
+          },
+          "bech32Config": {
+            "bech32PrefixAccAddr": "osmo",
+            "bech32PrefixAccPub": "osmopub",
+            "bech32PrefixValAddr": "osmovaloper",
+            "bech32PrefixValPub": "osmovaloperpub",
+            "bech32PrefixConsAddr": "osmovalcons",
+            "bech32PrefixConsPub": "osmovalconspub"
+          },
+          "currencies": [
+            {
+              "coinDenom": "OSMO",
+              "coinMinimalDenom": "uosmo",
+              "coinDecimals": 6,
+              "coinGeckoId": "osmosis"
+            }
+          ],
+          "feeCurrencies": [
+            {
+              "coinDenom": "OSMO",
+              "coinMinimalDenom": "uosmo",
+              "coinDecimals": 6,
+              "coinGeckoId": "osmosis",
+              "gasPriceStep": {
+                "low": 0.01,
+                "average": 0.025,
+                "high": 0.04
+              }
+            }
+          ]
+        }
       },
       { "name": "walletConnect" }
     ],
@@ -96,7 +139,50 @@
     "supported_wallets": [
       {
         "name": "keplr",
-        "config": {}
+        "config": {
+          "rpc": "https://osmo-mainnet-rpc.apollo.farm",
+          "rest": "https://osmo-mainnet-rest.apollo.farm",
+          "chainId": "osmosis-1",
+          "chainName": "osmosis",
+          "stakeCurrency": {
+            "coinDenom": "OSMO",
+            "coinMinimalDenom": "uosmo",
+            "coinDecimals": 6,
+            "coinGeckoId": "osmosis"
+          },
+          "bip44": {
+            "coinType": 118
+          },
+          "bech32Config": {
+            "bech32PrefixAccAddr": "osmo",
+            "bech32PrefixAccPub": "osmopub",
+            "bech32PrefixValAddr": "osmovaloper",
+            "bech32PrefixValPub": "osmovaloperpub",
+            "bech32PrefixConsAddr": "osmovalcons",
+            "bech32PrefixConsPub": "osmovalconspub"
+          },
+          "currencies": [
+            {
+              "coinDenom": "OSMO",
+              "coinMinimalDenom": "uosmo",
+              "coinDecimals": 6,
+              "coinGeckoId": "osmosis"
+            }
+          ],
+          "feeCurrencies": [
+            {
+              "coinDenom": "OSMO",
+              "coinMinimalDenom": "uosmo",
+              "coinDecimals": 6,
+              "coinGeckoId": "osmosis",
+              "gasPriceStep": {
+                "low": 0.01,
+                "average": 0.025,
+                "high": 0.04
+              }
+            }
+          ]
+        }
       },
       { "name": "walletConnect" }
     ],
@@ -159,7 +245,50 @@
     "supported_wallets": [
       {
         "name": "keplr",
-        "config": {}
+        "config": {
+          "rpc": "https://secret-testnet-rpc.apollo.farm",
+          "rest": "https://secret-testnet-rest.apollo.farm",
+          "chainId": "pulsar-2",
+          "chainName": "secrettestnet",
+          "stakeCurrency": {
+            "coinDenom": "SCRT",
+            "coinMinimalDenom": "uscrt",
+            "coinDecimals": 6,
+            "coinGeckoId": "secret"
+          },
+          "bip44": {
+            "coinType": 118
+          },
+          "bech32Config": {
+            "bech32PrefixAccAddr": "secret",
+            "bech32PrefixAccPub": "secretpub",
+            "bech32PrefixValAddr": "secretvaloper",
+            "bech32PrefixValPub": "secretvaloperpub",
+            "bech32PrefixConsAddr": "secretvalcons",
+            "bech32PrefixConsPub": "secretvalconspub"
+          },
+          "currencies": [
+            {
+              "coinDenom": "SCRT",
+              "coinMinimalDenom": "uscrt",
+              "coinDecimals": 6,
+              "coinGeckoId": "secret"
+            }
+          ],
+          "feeCurrencies": [
+            {
+              "coinDenom": "SCRT",
+              "coinMinimalDenom": "uscrt",
+              "coinDecimals": 6,
+              "coinGeckoId": "secret",
+              "gasPriceStep": {
+                "low": 0.01,
+                "average": 0.025,
+                "high": 0.04
+              }
+            }
+          ]
+        }
       },
       { "name": "walletConnect" }
     ],
@@ -201,7 +330,50 @@
     "supported_wallets": [
       {
         "name": "keplr",
-        "config": {}
+        "config": {
+          "rpc": "https://injective-testnet-rpc.apollo.farm",
+          "rest": "https://injective-testnet-lcd.apollo.farm",
+          "chainId": "injective-1",
+          "chainName": "injective",
+          "stakeCurrency": {
+            "coinDenom": "INJ",
+            "coinMinimalDenom": "inj",
+            "coinDecimals": 18,
+            "coinGeckoId": "injective-protocol"
+          },
+          "bip44": {
+            "coinType": 60
+          },
+          "bech32Config": {
+            "bech32PrefixAccAddr": "inj",
+            "bech32PrefixAccPub": "injpub",
+            "bech32PrefixValAddr": "injvaloper",
+            "bech32PrefixValPub": "injvaloperpub",
+            "bech32PrefixConsAddr": "injvalcons",
+            "bech32PrefixConsPub": "injvalconspub"
+          },
+          "currencies": [
+            {
+              "coinDenom": "INJ",
+              "coinMinimalDenom": "inj",
+              "coinDecimals": 18,
+              "coinGeckoId": "injective-protocol"
+            }
+          ],
+          "feeCurrencies": [
+            {
+              "coinDenom": "INJ",
+              "coinMinimalDenom": "inj",
+              "coinDecimals": 18,
+              "coinGeckoId": "injective-protocol",
+              "gasPriceStep": {
+                "low": 0.01,
+                "average": 0.025,
+                "high": 0.04
+              }
+            }
+          ]
+        }
       },
       { "name": "walletConnect" }
     ],
