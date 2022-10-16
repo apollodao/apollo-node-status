@@ -1,11 +1,13 @@
 import type { AppProps } from "next/app";
-import { Layout } from "modules/common";
+import { Layout, NetworkMangerProvider } from "modules/common";
 
 function ApolloApp({ Component, pageProps }: AppProps) {
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <NetworkMangerProvider>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </NetworkMangerProvider>
   );
 }
 

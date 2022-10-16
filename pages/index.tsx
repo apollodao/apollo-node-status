@@ -1,9 +1,13 @@
 import type { NextPage } from "next";
 import { Box, Container, Grid } from "@mui/material";
-import { networks, supported_networks } from "modules/common/config/networks";
+import { supported_networks } from "modules/common/config/networks";
 import { Section, NetworkCard } from "modules/common/components";
+import { useNetworkManager } from "modules/common";
 
 const Home: NextPage = () => {
+  const { networkConfig } = useNetworkManager();
+  if (!networkConfig) return <>Loading...</>;
+
   return (
     <Container>
       <Section>
@@ -21,7 +25,7 @@ const Home: NextPage = () => {
       <Section>
         <Grid container spacing={2}>
           {supported_networks.map((n) => (
-            <NetworkCard key={`networks-${n}`} network={networks[n]} />
+            <NetworkCard key={`networks-${n}`} network={networkConfig[n]} />
           ))}
         </Grid>
       </Section>
