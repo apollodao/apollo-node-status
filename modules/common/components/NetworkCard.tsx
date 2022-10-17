@@ -10,12 +10,15 @@ import {
 } from "@mui/material";
 import request from "axios";
 import { Network } from "modules/common/config/networks";
-
-import { InfoItem } from "./";
+import { InfoItem, KeplrConnect } from "./";
 
 export const NetworkCard = ({ network }: { network: Network }) => {
   const [apolloBlock, setApolloBlock] = useState(0);
   const [foreignBlock, setForeignBlock] = useState(0);
+
+  const keplrInfo = network.supported_wallets.find(
+    (n) => n.name === "keplr"
+  )?.config;
 
   const fetchBlock = async (source: "apollo" | "foreign") => {
     let host = "";
@@ -135,6 +138,7 @@ export const NetworkCard = ({ network }: { network: Network }) => {
         </CardContent>
         <CardActions>
           <Button onClick={fetchNetworks}>Refresh</Button>
+          {keplrInfo && <KeplrConnect chainInfo={keplrInfo} />}
         </CardActions>
       </Card>
     </Grid>
