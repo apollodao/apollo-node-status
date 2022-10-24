@@ -23,11 +23,11 @@
     "public_nodes": [
       {
         "type": "rpc",
-        "url": "https://testnet-rpc.osmosis.zone"
+        "url": "https://osmosistest-rpc.quickapi.com"
       },
       {
         "type": "rest",
-        "url": "https://testnet-rest.osmosis.zone"
+        "url": "https://osmosistest-lcd.quickapi.com"
       }
     ],
     "supported_wallets": [
@@ -333,6 +333,112 @@
         "config": {
           "rpc": "https://injective-testnet-rpc.apollo.farm",
           "rest": "https://injective-testnet-lcd.apollo.farm",
+          "chainId": "injective-888",
+          "chainName": "injective",
+          "stakeCurrency": {
+            "coinDenom": "INJ",
+            "coinMinimalDenom": "inj",
+            "coinDecimals": 18,
+            "coinGeckoId": "injective-protocol"
+          },
+          "bip44": {
+            "coinType": 60
+          },
+          "bech32Config": {
+            "bech32PrefixAccAddr": "inj",
+            "bech32PrefixAccPub": "injpub",
+            "bech32PrefixValAddr": "injvaloper",
+            "bech32PrefixValPub": "injvaloperpub",
+            "bech32PrefixConsAddr": "injvalcons",
+            "bech32PrefixConsPub": "injvalconspub"
+          },
+          "currencies": [
+            {
+              "coinDenom": "INJ",
+              "coinMinimalDenom": "inj",
+              "coinDecimals": 18,
+              "coinGeckoId": "injective-protocol"
+            }
+          ],
+          "feeCurrencies": [
+            {
+              "coinDenom": "INJ",
+              "coinMinimalDenom": "inj",
+              "coinDecimals": 18,
+              "coinGeckoId": "injective-protocol",
+              "gasPriceStep": {
+                "low": 0.01,
+                "average": 0.025,
+                "high": 0.04
+              }
+            }
+          ]
+        }
+      },
+      { "name": "walletConnect" }
+    ],
+    "supported_apps": [
+      {
+        "name": "safe",
+        "supportedFeatures": ["cw3-fixed"]
+      }
+    ],
+    "code_ids": [
+      {
+        "label": "apollo cw3",
+        "id": 1,
+        "checksum": "",
+        "query_messages": [],
+        "execution_messages": []
+      }
+    ],
+    "contracts": [
+      {
+        "label": "Apollo Safe CW3",
+        "address": "",
+        "admin": "",
+        "code_id": 1,
+        "init_message": ""
+      }
+    ]
+  },
+  "injective-1": {
+    "name": "injective",
+    "chain_id": "injective-1",
+    "nodes": [
+      {
+        "isValidator": false,
+        "walletAddress": "",
+        "valAddress": "",
+        "id": "",
+        "services": [
+          {
+            "type": "rpc",
+            "url": "https://injective-mainnet-rpc.apollo.farm"
+          },
+          {
+            "type": "rest",
+            "url": "https://injective-mainnet-lcd.apollo.farm"
+          }
+        ]
+      }
+    ],
+    "public_nodes": [
+      {
+        "type": "rpc",
+        "url": "https://k8s.mainnet.tm.injective.network"
+      },
+      {
+        "type": "rest",
+        "url": "https://k8s.mainnet.lcd.injective.network"
+      }
+    ],
+    "supported_wallets": [
+      {
+        "name": "keplr",
+        "config": {
+          "rpc": "https://injective-mainnet-rpc.apollo.farm",
+          "rest": "https://injective-mainnet-lcd.apollo.farm",
           "chainId": "injective-1",
           "chainName": "injective",
           "stakeCurrency": {

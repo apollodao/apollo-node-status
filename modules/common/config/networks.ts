@@ -5,6 +5,7 @@ export const supported_networks = [
   "osmosis-1",
   "pulsar-2",
   "injective-888",
+  "injective-1",
 ] as const;
 
 type SupportedNetwork = typeof supported_networks[number];
