@@ -24,9 +24,12 @@ const Home: NextPage = () => {
 
       <Section>
         <Grid container spacing={2}>
-          {supported_networks.map((n) => (
-            <NetworkCard key={`networks-${n}`} network={networkConfig[n]} />
-          ))}
+          {supported_networks.map(
+            (n) =>
+              networkConfig[n] && (
+                <NetworkCard key={`networks-${n}`} network={networkConfig[n]} />
+              )
+          )}
         </Grid>
       </Section>
     </Container>

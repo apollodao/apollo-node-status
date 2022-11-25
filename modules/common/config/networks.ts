@@ -70,6 +70,6 @@ type CodeID = {
 };
 
 export const APOLLO_NETWORK_URI =
-  "https://raw.githubusercontent.com/apollodao/apollo-node-status/master/modules/common/config/networks.json";
+  "https://raw.githubusercontent.com/apollodao/apollo-config/master/config.json";
 
 export const AUTO_CONNECT_KEY = "apollo_save_wallet_";
