@@ -8,7 +8,7 @@ export const supported_networks = [
   "injective-1",
 ] as const;
 
-type SupportedNetwork = typeof supported_networks[number];
+export type SupportedNetwork = typeof supported_networks[number];
 
 export type NetworkConfig = {
   [k in SupportedNetwork]: Network;
