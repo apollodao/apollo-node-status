@@ -42,6 +42,8 @@ export const useContract = (
   };
 
   const changeContract = (contractAddress: string) => {
+    console.log("change contact to:", contractAddress);
+    console.log("on network:", currentNetwork);
     setCurrentContractAddress(contractAddress);
   };
 
