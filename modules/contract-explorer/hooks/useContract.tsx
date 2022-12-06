@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { SupportedNetwork, useNetworkManager } from "modules/common";
 import {
   CosmWasmClient,
@@ -16,6 +16,7 @@ export type IUseContract = {
   contractInfo: Contract;
   contractHistory: readonly ContractCodeHistoryEntry[];
   arbitraryQuery: (query: JsonObject) => JsonObject;
+  queryList: string[];
 };
 
 export const useContract = (
@@ -31,6 +32,7 @@ export const useContract = (
   const [contractHistory, setContractHistory] = useState<
     readonly ContractCodeHistoryEntry[]
   >([] as readonly ContractCodeHistoryEntry[]);
+  const [queryList, setQueryList] = useState<string[]>([]);
 
   const { networkConfig } = useNetworkManager();
 
@@ -59,10 +61,11 @@ export const useContract = (
         setContractHistory(
           await client.getContractCodeHistory(currentContractAddress)
         );
-        // const search = await client.searchTx({
-        //   sentFromOrTo: currentContractAddress,
-        // });
+        const search = await client.searchTx({
+          sentFromOrTo: currentContractAddress,
+        });
         // console.log(search);
+
         setValidContract(true);
       } catch (error) {
         setValidContract(false);
@@ -74,24 +77,59 @@ export const useContract = (
     }
   }, [networkConfig, currentNetwork, currentContractAddress]);
 
-  const arbitraryQuery = async (query: JsonObject) => {
-    if (!networkConfig) return;
-    let rpc_host =
-      networkConfig[currentNetwork].public_nodes.find((n) => n.type === "rpc")
-        ?.url || "";
+  useEffect(() => {
+    const generateAvailableQueries = async () => {
+      if (!networkConfig) return;
+      let rpc_host =
+        networkConfig[currentNetwork].public_nodes.find((n) => n.type === "rpc")
+          ?.url || "";
 
-    if (rpc_host === "https://osmosistest-rpc.quickapi.com")
-      rpc_host = "https://testnet-rpc.osmosis.zone";
-
-    try {
-      console.log("try to run this query:", query);
+      if (rpc_host === "https://osmosistest-rpc.quickapi.com")
+        rpc_host = "https://testnet-rpc.osmosis.zone";
       const client = await CosmWasmClient.connect(rpc_host);
-      const response = await client.queryContractSmart(contractAddress, query);
-      return response;
-    } catch (error) {
-      console.log("error running query", error);
-    }
-  };
+
+      try {
+        await client.queryContractSmart(currentContractAddress, { alpha: {} });
+      } catch (purposefulError: any) {
+        const message = purposefulError.message;
+        const queryStringRegEx = /(?<=expected one of )(.*)(?=query)/;
+        const queryString = queryStringRegEx.exec(message);
+
+        if (!queryString) return;
+        const str = queryString[0];
+        setQueryList(
+          str.split("`").filter((s) => s.replace(/\s+/g, "").length > 1)
+        );
+      }
+    };
+    generateAvailableQueries();
+  }, [currentContractAddress, currentNetwork, networkConfig]);
+
+  const arbitraryQuery = useCallback(
+    async (query: JsonObject) => {
+      if (!networkConfig) return;
+      let rpc_host =
+        networkConfig[currentNetwork].public_nodes.find((n) => n.type === "rpc")
+          ?.url || "";
+
+      if (rpc_host === "https://osmosistest-rpc.quickapi.com")
+        rpc_host = "https://testnet-rpc.osmosis.zone";
+
+      try {
+        console.log("try to run this query:", query);
+        console.log("on this contract:", currentContractAddress);
+        const client = await CosmWasmClient.connect(rpc_host);
+        const response = await client.queryContractSmart(
+          currentContractAddress,
+          query
+        );
+        return response;
+      } catch (error) {
+        console.log("error running query", error);
+      }
+    },
+    [currentContractAddress, currentNetwork, networkConfig]
+  );
 
   return {
     changeNetwork,
@@ -102,5 +140,6 @@ export const useContract = (
     contractInfo,
     contractHistory,
     arbitraryQuery,
+    queryList,
   };
 };

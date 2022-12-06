@@ -32,7 +32,11 @@ const ContractExplorer: NextPage = () => {
     contractInfo,
     contractHistory,
     arbitraryQuery,
-  } = useContract("", "osmo-test-4");
+    queryList,
+  } = useContract(
+    "osmo1lcnpd5000ru7qpd0tz8wnl00rlfvlxvqlw04md9cxsudapd0flvsqke5t5",
+    "osmo-test-4"
+  );
   if (!networkConfig) return <>Loading...</>;
 
   const handleNetworkChange = (n: SelectChangeEvent) => {
@@ -89,7 +93,7 @@ const ContractExplorer: NextPage = () => {
 
       {validContract && (
         <Box mb={32}>
-          <QueryBox queryHandler={arbitraryQuery} />
+          <QueryBox queryHandler={arbitraryQuery} queryList={queryList} />
           <Section>
             <Box fontWeight={"bolder"} fontSize={16} mb={2}>
               Contract Details
