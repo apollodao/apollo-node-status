@@ -46,7 +46,7 @@ export const QueryBox = ({
 
       <Button
         onClick={async () => {
-          const query = JSON.parse(textValue);
+          const query = JSON.parse(textValue || "{}");
           try {
             const response = await queryHandler(query);
             setQueryResponse(response);
