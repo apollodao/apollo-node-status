@@ -15,9 +15,7 @@ export const QueryBox = ({
 }: {
   queryHandler: (query: JsonObject) => JsonObject;
 }) => {
-  const [textValue, setTextValue] = useState<string>(
-    '{"vault_extension":{"apollo":{"state":{}}}}'
-  );
+  const [textValue, setTextValue] = useState<string>("{}");
   const [queryResponse, setQueryResponse] = useState<JsonObject>();
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTextValue(event.target.value);

@@ -32,10 +32,7 @@ const ContractExplorer: NextPage = () => {
     contractInfo,
     contractHistory,
     arbitraryQuery,
-  } = useContract(
-    "osmo1lcnpd5000ru7qpd0tz8wnl00rlfvlxvqlw04md9cxsudapd0flvsqke5t5",
-    "osmo-test-4"
-  );
+  } = useContract("", "osmo-test-4");
   if (!networkConfig) return <>Loading...</>;
 
   const handleNetworkChange = (n: SelectChangeEvent) => {
