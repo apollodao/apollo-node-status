@@ -34,8 +34,8 @@ const ContractExplorer: NextPage = () => {
     arbitraryQuery,
     queryList,
   } = useContract(
-    "osmo1wl59k23zngj34l7d42y9yltask7rjlnxgccawc7ltrknp6n52fps94qsjd",
-    "osmosis-1"
+    "osmo1lcnpd5000ru7qpd0tz8wnl00rlfvlxvqlw04md9cxsudapd0flvsqke5t5",
+    "osmo-test-4"
   );
   if (!networkConfig) return <>Loading...</>;
 

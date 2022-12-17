@@ -54,9 +54,6 @@ export const useContract = (
         networkConfig[currentNetwork].public_nodes.find((n) => n.type === "rpc")
           ?.url || "";
 
-      if (rpc_host === "https://osmosistest-rpc.quickapi.com")
-        rpc_host = "https://testnet-rpc.osmosis.zone";
-
       try {
         const client = await CosmWasmClient.connect(rpc_host);
         setContractInfo(await client.getContract(currentContractAddress));
@@ -86,22 +83,21 @@ export const useContract = (
         networkConfig[currentNetwork].public_nodes.find((n) => n.type === "rpc")
           ?.url || "";
 
-      if (rpc_host === "https://osmosistest-rpc.quickapi.com")
-        rpc_host = "https://testnet-rpc.osmosis.zone";
       const client = await CosmWasmClient.connect(rpc_host);
 
       try {
         await client.queryContractSmart(currentContractAddress, { alpha: {} });
       } catch (purposefulError: any) {
         const message = purposefulError.message;
-        const queryStringRegEx = /(?<=expected one of )(.*)(?=query)/;
-        const queryString = queryStringRegEx.exec(message);
 
-        if (!queryString) return;
-        const str = queryString[0];
-        setQueryList(
-          str.split("`").filter((s) => s.replace(/\s+/g, "").length > 1)
-        );
+        const regex = /`(.*?)`/g;
+
+        let matches = message.match(regex);
+        if (!matches) return;
+
+        matches = matches.map((m: any) => m.replaceAll("`", ""));
+        matches.shift();
+        setQueryList(matches);
       }
     };
     generateAvailableQueries();
